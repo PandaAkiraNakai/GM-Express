@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nosotros | GM Express</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-sm bg-custom navbar-dark shadow">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'inicio' %}">
+            <img src="{% static 'images/gm express.png' %}" alt="GM Express" height="48" id="logo" />
+            <span class="fs-4 fw-bold">GM Express</span>
+          </a>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'info_empresa' %}">Sobre Nosotros</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero-section text-center py-5 mb-5" style="background: linear-gradient(120deg, #a5d6a7 0%, #e8f5e9 100%);">
+      <div class="container">
+        <h1 class="display-5 fw-bold mb-3">Sobre GM Express</h1>
+        <p class="lead mb-0">Conoce nuestra historia, misión, visión y valores.</p>
+      </div>
+    </section>
+    <main>
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="section-card h-100">
+              <h2 class="section-title">Nuestra Historia</h2>
+              <p class="lead">{{ historia }}</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="section-card mb-4">
+              <h2 class="section-title">Misión</h2>
+              <p>{{ mision }}</p>
+            </div>
+            <div class="section-card">
+              <h2 class="section-title">Visión</h2>
+              <p>{{ vision }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="section-card mb-4">
+          <h2 class="section-title">Nuestros Valores</h2>
+          <div class="values-list d-flex flex-wrap gap-2 justify-content-center">
+            {% for valor in valores %}
+            <div class="value-item">{{ valor }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <div class="section-card h-100">
+              <h2 class="section-title">Contacto</h2>
+              <div class="contact-item mb-2">
+                <span>📞</span>
+                <div>
+                  <strong>Teléfono:</strong><br />
+                  {{ contactos.teléfono }}
+                </div>
+              </div>
+              <div class="contact-item">
+                <span>✉️</span>
+                <div>
+                  <strong>Email:</strong><br />
+                  {{ contactos.email }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="section-card h-100">
+              <h2 class="section-title">Redes Sociales</h2>
+              <div class="social-links d-flex flex-wrap gap-2">
+                {% for red in redes %}
+                <a href="{{ red.url }}" target="_blank">{{ red.nombre }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="{% url 'inicio' %}" class="btn btn-success btn-lg">Volver al Inicio</a>
+        </div>
+      </div>
+    </main>
+    <footer class="mt-5">
+      &copy; 2025 GM Express | Todos los derechos reservados. &mdash; <a href="mailto:ventas@gmexpress.cl">Contacto</a> &mdash;
+      <a href="https://www.facebook.com/GMEXPRESSCL" target="_blank">Facebook</a> |
+      <a href="https://www.instagram.com/gmexpress_cl/?hl=es" target="_blank">Instagram</a>
+    </footer>
+  </body>
+</html>

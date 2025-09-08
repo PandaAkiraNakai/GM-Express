@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GM Express</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-sm bg-custom navbar-dark shadow">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'inicio' %}">
+            <img src="{% static 'images/gm express.png' %}" alt="GM Express" height="48" id="logo" />
+            <span class="fs-4 fw-bold">GM Express</span>
+          </a>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'info_empresa' %}">Sobre Nosotros</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  <body>
+    <section class="hero-section text-center py-5 mb-5" style="background: linear-gradient(120deg, #a5d6a7 0%, #e8f5e9 100%);">
+      <div class="container">
+        <img src="{% static 'images/gm express.png' %}" alt="GM Express" height="80" class="mb-3" />
+        <h1 class="display-5 fw-bold mb-3">Bienvenido a GM Express</h1>
+        <p class="lead mb-0">Soluciones en alimentación, eventos y servicios para empresas y personas.</p>
+      </div>
+    </section>
+    <main>
+      <div class="container">
+        <h2 class="mb-4 text-center">Catálogo de Servicios</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+          {% for id, dato in catalogo_servicios.items %}
+          <div class="col d-flex align-items-stretch">
+            <div class="card shadow-sm border-0 h-100 service-card position-relative overflow-hidden" style="transition: transform .2s;">
+              <img src="{% static 'images/' %}{{dato.imagen}}" class="card-img-top p-3 rounded-4" alt="{{dato.nombre}}" style="height: 180px; object-fit: cover; background: #f5f5f5;" />
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title mb-3">{{dato.nombre}}</h5>
+                {% if dato.servicio_tipo %}
+                  <a href="{% url 'catalogo_productos' dato.servicio_tipo %}" class="btn btn-success w-100 mt-auto">Ver más</a>
+                {% else %}
+                  <a class="btn btn-secondary w-100 disabled mt-auto" aria-disabled="true">Sin detalle</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+    <footer class="mt-5">
+      &copy; 2025 GM Express | Todos los derechos reservados. &mdash; <a href="mailto:ventas@gmexpress.cl">Contacto</a> &mdash;
+      <a href="https://www.facebook.com/GMEXPRESSCL" target="_blank">Facebook</a> |
+      <a href="https://www.instagram.com/gmexpress_cl/?hl=es" target="_blank">Instagram</a>
+    </footer>
+  </body>
+</html>
