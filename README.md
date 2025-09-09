@@ -1,4 +1,4 @@
-# Backend1
+# GMExpress
 
 Este proyecto corresponde al backend de GM Express, una empresa chilena de servicios de alimentación y eventos. El sistema está desarrollado en Django y organiza la información de la empresa, su catálogo de productos y servicios, y la gestión de vistas y plantillas para la presentación web.
 
