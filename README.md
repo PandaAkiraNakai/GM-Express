@@ -1,44 +1,51 @@
-# GMExpress
 
-Este proyecto corresponde al backend de GM Express, una empresa chilena de servicios de alimentación y eventos. El sistema está desarrollado en Django y organiza la información de la empresa, su catálogo de productos y servicios, y la gestión de vistas y plantillas para la presentación web.
+<p align="center">
+   <img src="static/images/gm express.png" alt="GM Express Logo" width="180"/>
+</p>
 
-## Estructura del Proyecto
+<h1 align="center">Backend GM Express</h1>
 
-```
+<p align="center">
+   <b>Backend desarrollado en Django para la gestión de servicios de alimentación y eventos de <span style="color:#388e3c">GM Express</span>.</b>
+   <br>
+   <i>Organiza información institucional, catálogo de productos y servicios, y presentación web moderna.</i>
+</p>
+
+---
+
+
+## 🗂️ Estructura del Proyecto
+
+```text
 Backend1/
 │
-├── db.sqlite3
-├── manage.py
-├── README.md
+├── db.sqlite3           # Base de datos SQLite
+├── manage.py            # Script de gestión Django
+├── README.md            # Este archivo
 │
-├── catalogo/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── views.py
-│   ├── __pycache__/
-│   └── migrations/
+├── catalogo/            # Lógica y datos del catálogo
+│   ├── models.py        # Modelos de productos y servicios
+│   ├── views.py         # Vistas del catálogo
+│   └── ...
 │
-├── empresa/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── views.py
-│   ├── __pycache__/
-│   └── migrations/
+├── empresa/             # Información institucional
+│   ├── models.py        # Modelos de empresa
+│   ├── views.py         # Vistas de empresa
+│   └── ...
 │
-├── gmexpress/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── __pycache__/
+├── gmexpress/           # Configuración principal Django
+│   ├── settings.py      # Ajustes del proyecto
+│   ├── urls.py          # Rutas principales
+│   └── ...
 │
+├── static/              # Archivos estáticos (CSS, imágenes)
+│   ├── CSS/
+│   └── images/
+│
+└── templates/           # Plantillas HTML
+   ├── templateCatalogo/
+   └── templateEmpresa/
+```
 ├── static/
 │   ├── CSS/
 │   │   └── style.css
@@ -53,25 +60,33 @@ Backend1/
         └── info.html
 ```
 
-## Descripción General
 
-- **catalogo/**: Contiene la lógica y los datos del catálogo de productos y servicios, incluyendo menús para transporte, eventos, snacks, presencial, y servicios adicionales. Los datos están definidos en diccionarios dentro de [`catalogo.models`](catalogo/models.py).
-- **empresa/**: Incluye la información institucional de la empresa (historia, misión, visión, valores, contactos y redes sociales) y las vistas asociadas. Ver [`empresa.views`](empresa/views.py).
-- **gmexpress/**: Configuración principal del proyecto Django (ajustes, rutas, etc.).
-- **static/**: Archivos estáticos como hojas de estilo CSS y recursos de imágenes. El diseño utiliza una paleta de verdes personalizada en [`static/CSS/style.css`](static/CSS/style.css).
-- **templates/**: Plantillas HTML para la presentación web, organizadas en carpetas para el catálogo y la empresa.
+## 📝 Descripción General
 
-## Funcionalidades
+| Carpeta/Archivo | Descripción |
+|-----------------|-------------|
+| <b>catalogo/</b> | Lógica y datos del catálogo de productos y servicios (menús, snacks, transporte, etc.). Ver [`catalogo/models.py`](catalogo/models.py) |
+| <b>empresa/</b>  | Información institucional: historia, misión, visión, valores, contactos y redes sociales. Ver [`empresa/views.py`](empresa/views.py) |
+| <b>gmexpress/</b>| Configuración principal del proyecto Django (ajustes, rutas, etc.) |
+| <b>static/</b>   | Archivos estáticos: CSS y recursos de imágenes. Paleta de verdes personalizada en [`static/CSS/style.css`](static/CSS/style.css) |
+| <b>templates/</b>| Plantillas HTML para la presentación web, organizadas por área |
 
-- Visualización de la información de la empresa: historia, misión, visión, valores, contactos y redes sociales.
+
+## 🚀 Funcionalidades
+
+- Visualización de información institucional: historia, misión, visión, valores, contactos y redes sociales.
 - Catálogo de productos y servicios con imágenes, descripciones, ingredientes/componentes, tiempos de entrega y condiciones de consumo.
-- Navegación entre diferentes tipos de menús y servicios.
-- Interfaz moderna y responsiva basada en Bootstrap y estilos personalizados.
+- Navegación intuitiva entre diferentes tipos de menús y servicios.
+- Interfaz moderna y responsiva basada en <b>Bootstrap</b> y estilos personalizados.
 
-## Ejecución del Proyecto
 
-1. Instala las dependencias necesarias (Django).
-2. Ejecuta las migraciones si es necesario:
+## 🛠️ Ejecución del Proyecto
+
+1. Instala las dependencias necesarias (Django):
+   ```sh
+   pip install django
+   ```
+2. Ejecuta las migraciones:
    ```sh
    python manage.py migrate
    ```
@@ -79,8 +94,15 @@ Backend1/
    ```sh
    python manage.py runserver
    ```
-4. Accede a la aplicación en `http://localhost:8000/`.
+4. Accede a la aplicación en [http://localhost:8000/](http://localhost:8000/)
 
-## Créditos
+
+---
+
+## 👥 Créditos
 
 - Bizcochitos y su Proyecto
+
+<p align="center">
+   <img src="static/images/servicio.png" alt="Servicio GM Express" width="120"/>
+</p>
