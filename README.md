@@ -48,17 +48,6 @@ GM-Express/
       ├── inicio.html
       └── info.html
 ```
-│   │   └── style.css
-│   └── images/
-│
-└── templates/
-    ├── templateCatalogo/
-    │   ├── catalogo2.html
-    │   └── catalogo3.html
-    └── templateEmpresa/
-        ├── inicio.html
-        └── info.html
-```
 
 
 ## 📝 Descripción General
