@@ -102,24 +102,6 @@ GM-Express/
 ```
 Usuario: admin
 Contraseña: admin123
-```
-
-### **🌐 URLs de Acceso:**
-```bash
-# Sitio web principal
-http://127.0.0.1:8000/
-
-# Panel administrativo
-http://127.0.0.1:8000/admin/
-
-# Dashboard de gestión
-http://127.0.0.1:8000/dashboard/
-
-# Servicios específicos
-http://127.0.0.1:8000/catalogo/tradicional/
-http://127.0.0.1:8000/catalogo/transportado/
-http://127.0.0.1:8000/catalogo/coffee/
-```
 
 ---
 
@@ -184,47 +166,6 @@ python manage.py actualizar_imagenes
 
 ---
 
-## 📊 **Datos del Proyecto**
-
-### **📈 Estadísticas:**
-- **4 Aplicaciones** Django independientes
-- **9 Modelos** con relaciones ForeignKey
-- **50+ Registros** de datos reales
-- **32 Imágenes** de productos y servicios
-- **6 Servicios** de GM-Express
-- **31 Productos** alimenticios
-
-### **🏢 Servicios de GM-Express:**
-1. **Alimentación transportada** - Delivery empresarial
-2. **Alimentación tradicional** - Servicio presencial  
-3. **Concesión de Casinos** - Gestión de comedores
-4. **Coffee break y eventos** - Eventos corporativos
-5. **Repostería y snacks** - Productos horneados
-6. **Alimentación ejecutiva** - Servicio a domicilio
-
----
-
-## 👥 **Para Equipo de 3 Integrantes**
-
-### **📋 Distribución Sugerida:**
-
-**👤 Integrante 1 - `usuarios`:**
-- Gestión de usuarios y tipos
-- Sistema de autenticación
-- Perfiles y permisos
-
-**👤 Integrante 2 - `catalogue`:**
-- Catálogo de productos
-- Categorías y clasificación
-- Gestión de inventario
-
-**👤 Integrante 3 - `ventas`:**
-- Sistema de ventas
-- Procesamiento de pedidos
-- Reportes financieros
-
----
-
 ## 🔄 **Base de Datos**
 
 ### **🗄️ SQLite (Desarrollo):**
@@ -248,38 +189,11 @@ python manage.py actualizar_imagenes
 
 ---
 
-## 🎉 **Estado de Completado**
-
-### **✅ Funcionalidades Implementadas:**
-- [x] Sistema de autenticación completo
-- [x] Panel administrativo personalizado
-- [x] Sitio web responsive con Bootstrap
-- [x] Base de datos poblada con datos reales
-- [x] Navegación entre servicios y productos
-- [x] Sistema de imágenes automático
-- [x] Dashboard con estadísticas
-- [x] Comandos de gestión personalizados
-
-### **🚀 Listo Para:**
-- [x] Presentación del proyecto
-- [x] Desarrollo por equipo de 3 personas
-- [x] Extensión de funcionalidades
-- [x] Despliegue en producción
-
----
-
 ## 🤝 **Contribuciones**
 
-Este proyecto está listo para ser trabajado por un equipo de 3 integrantes, cada uno especializándose en una aplicación específica.
-
----
-
-## 📞 **Contacto GM-Express**
-
-- **📧 Email:** ventas@gmexpress.cl
-- **📱 Teléfono:** +569 7615 9518 / +569 4785 4598
-- **🌐 Facebook:** [GMEXPRESSCL](https://www.facebook.com/GMEXPRESSCL)
-- **📷 Instagram:** [@gmexpress_cl](https://www.instagram.com/gmexpress_cl/?hl=es)
+Sergio el Nazer
+Savkapleito
+Dante's Inferno
 
 ---
 
