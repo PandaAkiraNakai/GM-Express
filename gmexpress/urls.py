@@ -7,6 +7,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', vista.inicio, name='inicio'),
     
+    # Rutas de autenticación
+    path('login/', vista.login_view, name='login'),
+    path('logout/', vista.logout_view, name='logout'),
+    path('dashboard/', vista.dashboard, name='dashboard'),
+    
     #path catalogos    
     path('catalogo/', catalogo_vista.catalogoServicios, name='catalogo'),
     path('catalogo/<str:servicio_tipo>/', catalogo_vista.catalogoProductos, name='catalogo_productos'),

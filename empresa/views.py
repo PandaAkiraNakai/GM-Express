@@ -1,7 +1,13 @@
 from django.http import HttpResponse
-
-from django.shortcuts import render
-from catalogo import models as datos
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.models import User
+from catalogo.models import Servicio
+from catalogue.models import Categoria, Producto
+from usuarios.models import Usuario, TipoUsuario
+from ventas.models import Venta, DetalleVenta
 
 def info_empresa(request): 
     datos = {
@@ -21,8 +27,50 @@ def info_empresa(request):
     # Comentario: renderiza la plantilla y pasa el diccionario 'datos'
     return render(request, 'templateEmpresa/info.html', datos)
 
+
 def inicio(request):
+    catalogo_servicios = Servicio.objects.filter(estado='1')
     data = {
-        'catalogo_servicios': datos.catalogoprincipal,
+        'catalogo_servicios': catalogo_servicios,
     }
     return render(request, 'templateEmpresa/inicio.html', data)
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Usuario o contraseña incorrectos')
+    return render(request, 'templateEmpresa/login.html')
+
+@login_required
+def dashboard(request):
+    # Estadísticas para el dashboard
+    total_usuarios = Usuario.objects.count()
+    total_productos = Producto.objects.count()
+    total_categorias = Categoria.objects.count()
+    total_servicios = Servicio.objects.count()
+    total_ventas = Venta.objects.count()
+    
+    # Ventas recientes
+    ventas_recientes = Venta.objects.order_by('-fecha_venta')[:5]
+    
+    context = {
+        'total_usuarios': total_usuarios,
+        'total_productos': total_productos,
+        'total_categorias': total_categorias,
+        'total_servicios': total_servicios,
+        'total_ventas': total_ventas,
+        'ventas_recientes': ventas_recientes,
+    }
+    return render(request, 'templateEmpresa/dashboard.html', context)
+
+@login_required
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Has cerrado sesión exitosamente')
+    return redirect('inicio')

@@ -1,6 +1,9 @@
-
 from pathlib import Path
 import os
+import pymysql
+
+# Instalar pymysql como MySQLdb
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'empresa',
     'catalogo',
+    'usuarios',
+    'ventas',
+    'catalogue',
 ]
 
 MIDDLEWARE = [
@@ -66,12 +72,36 @@ WSGI_APPLICATION = 'gmexpress.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Configuración SQLite (recomendada para desarrollo)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Configuración MySQL para XAMPP (comentada - requiere MariaDB 10.5+)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'gmexpress',
+#         'USER': 'root',  # Usuario por defecto de XAMPP
+#         'PASSWORD': '',  # Contraseña vacía por defecto en XAMPP
+#         'HOST': 'localhost',
+#         'PORT': '3306',  # Puerto por defecto de MySQL en XAMPP
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#     }
+# }
+
+# Configuración SQLite original (comentada para desarrollo)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -109,11 +139,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# Directorio de archivos estáticos para desarrollo (donde buscará archivos estáticos adicionales)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+# Directorio de archivos estáticos para producción (donde collectstatic los recopila)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_DIRS = [os.path.join(BASE_DIR, 'static')]
+# Nota: STATIC_DIRS no es una configuración válida de Django y se elimina para evitar confusión.
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# URLs de redirección para autenticación
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_REDIRECT_URL = '/'
