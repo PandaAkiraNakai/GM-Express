@@ -1,0 +1,57 @@
+{% extends 'base_crud.html' %}
+{% block title %}Lista de Ventas - GM Express{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="fas fa-shopping-cart"></i> Lista de Ventas</h4>
+                <a href="{% url 'venta_crear' %}" class="btn btn-light"><i class="fas fa-plus"></i> Nueva Venta</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha</th>
+                                <th>Usuario</th>
+                                <th>Estado</th>
+                                <th>Tipo</th>
+                                <th>Monto Total</th>
+                                <th class="table-actions">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for venta in ventas %}
+                            <tr>
+                                <td>{{ venta.id }}</td>
+                                <td>{{ venta.fecha_venta|date:"d/m/Y" }}</td>
+                                <td>{{ venta.usuario.nombre_completo }}</td>
+                                <td>
+                                    {% if venta.estado == '1' %}<span class="badge bg-warning">Pendiente</span>
+                                    {% elif venta.estado == '2' %}<span class="badge bg-info">En Proceso</span>
+                                    {% elif venta.estado == '3' %}<span class="badge bg-success">Completado</span>
+                                    {% elif venta.estado == '4' %}<span class="badge bg-danger">Cancelado</span>
+                                    {% elif venta.estado == '5' %}<span class="badge bg-secondary">Devuelto</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ venta.get_tipo_venta_display }}</td>
+                                <td>${{ venta.monto_total|floatformat:0 }}</td>
+                                <td>
+                                    <a href="{% url 'venta_detalle' venta.pk %}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="{% url 'venta_editar' venta.pk %}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'venta_eliminar' venta.pk %}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="7" class="text-center">No hay ventas registradas.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -21,7 +21,7 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=200)
     precio = models.PositiveIntegerField(null=False, verbose_name="Precio")
     stock = models.PositiveIntegerField(null=False, verbose_name="Stock")
-    imagen = models.CharField(max_length=255, default='default.jpg')
+    imagen = models.ImageField(upload_to='productos/', default='productos/default.jpg', verbose_name="Imagen")
     categoria_id = models.ForeignKey(Categoria, on_delete=models.PROTECT, limit_choices_to={'estado': '1'}, verbose_name="Categoría")
     def __str__(self):
         return f"ID: {self.id} | NOMBRE: {self.nombre} | DESCRIPCIÓN: {self.descripcion} | PRECIO: {self.precio} | STOCK: {self.stock} | IMAGEN: {self.imagen} | CATEGORÍA: {self.categoria_id}"

@@ -1,0 +1,25 @@
+{% extends 'base_crud.html' %}
+{% block title %}Eliminar Servicio - GM Express{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Confirmar Eliminación</h4>
+            </div>
+            <div class="card-body">
+                <p class="lead">¿Eliminar servicio "{{ servicio.nombre }}"?</p>
+                <div class="alert alert-warning">
+                    <p><strong>Tipo:</strong> {{ servicio.servicio_tipo }}</p>
+                    <p class="mb-0"><strong>Advertencia:</strong> No se puede eliminar si hay productos asociados.</p>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Sí, Eliminar</button>
+                    <a href="{% url 'servicio_lista' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

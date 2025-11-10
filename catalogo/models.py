@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class Servicio(models.Model):
     nombre = models.CharField(max_length=100, null=False)
-    imagen = models.CharField(max_length=255, default='default.jpg')
+    imagen = models.ImageField(upload_to='servicios/', default='servicios/default.jpg', verbose_name="Imagen")
     servicio_tipo = models.CharField(max_length=50, null=False)
     descripcion = models.CharField(max_length=200, null=True, blank=True)
     estado = models.CharField(max_length=1, default='1')
@@ -35,7 +35,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=200)
     precio = models.PositiveIntegerField(null=False, verbose_name="Precio")
-    imagen = models.CharField(max_length=255, default='default.jpg')
+    imagen = models.ImageField(upload_to='productos/', default='productos/default.jpg', verbose_name="Imagen")
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, verbose_name="Categoría")
     servicio = models.ForeignKey(Servicio, on_delete=models.PROTECT, verbose_name="Servicio", null=True, blank=True)
     

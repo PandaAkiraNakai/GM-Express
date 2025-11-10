@@ -145,6 +145,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Directorio de archivos estáticos para producción (donde collectstatic los recopila)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Media files (User uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Nota: STATIC_DIRS no es una configuración válida de Django y se elimina para evitar confusión.
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -155,3 +159,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
+
+# ========== CONFIGURACIÓN PARA PRODUCCIÓN AWS ==========
+# Detecta si está corriendo en AWS Elastic Beanstalk
+if 'RDS_HOSTNAME' in os.environ:
+    # Modo producción en AWS
+    DEBUG = False
+    ALLOWED_HOSTS = ['.elasticbeanstalk.com', '.amazonaws.com', '*']
+    
+    # Opcional: Configuración para usar RDS MySQL en AWS
+    # Descomenta si configuras una base de datos RDS
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.mysql',
+    #         'NAME': os.environ.get('RDS_DB_NAME', 'gmexpress'),
+    #         'USER': os.environ.get('RDS_USERNAME', 'admin'),
+    #         'PASSWORD': os.environ.get('RDS_PASSWORD', ''),
+    #         'HOST': os.environ.get('RDS_HOSTNAME', 'localhost'),
+    #         'PORT': os.environ.get('RDS_PORT', '3306'),
+    #     }
+    # }
+else:
+    # Modo desarrollo local (mantiene configuración actual)
+    pass

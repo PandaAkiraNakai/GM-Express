@@ -1,0 +1,22 @@
+{% extends 'base_crud.html' %}
+{% block title %}Eliminar Categoría - GM Express{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Confirmar Eliminación</h4>
+            </div>
+            <div class="card-body">
+                <p class="lead">¿Eliminar categoría "{{ categoria.nombre }}"?</p>
+                <div class="alert alert-warning">Advertencia: No se puede eliminar si hay productos asociados.</div>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Sí, Eliminar</button>
+                    <a href="{% url 'categoria_lista' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

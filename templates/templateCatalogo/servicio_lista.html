@@ -1,0 +1,53 @@
+{% extends 'base_crud.html' %}
+{% block title %}Lista de Servicios - GM Express{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="fas fa-concierge-bell"></i> Lista de Servicios</h4>
+                <a href="{% url 'servicio_crear' %}" class="btn btn-light"><i class="fas fa-plus"></i> Nuevo Servicio</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th class="table-actions">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for servicio in servicios %}
+                            <tr>
+                                <td>{{ servicio.id }}</td>
+                                <td>{{ servicio.nombre }}</td>
+                                <td><code>{{ servicio.servicio_tipo }}</code></td>
+                                <td>{{ servicio.descripcion|truncatewords:10 }}</td>
+                                <td>
+                                    {% if servicio.estado == '1' %}
+                                    <span class="badge bg-success">Activo</span>
+                                    {% else %}
+                                    <span class="badge bg-secondary">Inactivo</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'servicio_editar' servicio.pk %}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'servicio_eliminar' servicio.pk %}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="6" class="text-center">No hay servicios registrados.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

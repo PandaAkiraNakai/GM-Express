@@ -102,12 +102,45 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/">
-                                <i class="fas fa-cogs"></i> Administración
+                                <i class="fas fa-cogs"></i> Admin Django
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'inicio' %}">
                                 <i class="fas fa-home"></i> Sitio Principal
+                            </a>
+                        </li>
+                        <li><hr></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'usuario_lista' %}">
+                                <i class="fas fa-users"></i> Usuarios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tipo_usuario_lista' %}">
+                                <i class="fas fa-user-tag"></i> Tipos de Usuario
+                            </a>
+                        </li>
+                        <li><hr></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'producto_lista' %}">
+                                <i class="fas fa-box"></i> Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'categoria_lista' %}">
+                                <i class="fas fa-tags"></i> Categorías
+                            </a>
+                        </li>
+                        <li><hr></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'venta_lista' %}">
+                                <i class="fas fa-shopping-cart"></i> Ventas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'servicio_lista' %}">
+                                <i class="fas fa-concierge-bell"></i> Servicios
                             </a>
                         </li>
                     </ul>

@@ -1,0 +1,45 @@
+{% extends 'base_crud.html' %}
+
+{% block title %}Detalle Usuario - GM Express{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="fas fa-user"></i> Detalle del Usuario</h4>
+                <div>
+                    <a href="{% url 'usuario_editar' usuario.pk %}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <a href="{% url 'usuario_lista' %}" class="btn btn-light btn-sm">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>RUT:</strong> {{ usuario.run }}</p>
+                        <p><strong>Nombre Completo:</strong> {{ usuario.nombre_completo }}</p>
+                        <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+                        <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Fecha de Nacimiento:</strong> {{ usuario.fecha_nacimiento|date:"d/m/Y" }}</p>
+                        <p><strong>Tipo de Usuario:</strong> {{ usuario.tipo_usuario.descripcion }}</p>
+                        <p><strong>Estado:</strong> 
+                            {% if usuario.estado == '1' %}
+                                <span class="badge bg-success">Activo</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Inactivo</span>
+                            {% endif %}
+                        </p>
+                        <p><strong>Fecha de Registro:</strong> {{ usuario.fecha_registro|date:"d/m/Y H:i" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
